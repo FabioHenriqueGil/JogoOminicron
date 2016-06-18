@@ -15,11 +15,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
-/**
- * Classe player de �udio.
- *
- * @author Aline Rigues
- */
+
 public class PlayerMp3Wav implements Runnable {
 
     private String arquivo;
