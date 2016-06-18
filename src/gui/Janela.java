@@ -75,19 +75,29 @@ public class Janela extends Frame {
                 radio.tocar(Biblioteca.SonsCurtos.BUTTON_POSITIVE, 30);
 
                 //menu inicial
-                if (e.getKeyCode() == 10 && inicioMenu) {//enter
-                    inicioMenu = false;
-                    inicioDeJogo = true;
-                    radio.tocar(Biblioteca.SonsFundo.NENHUMA_MUSICA, NORMAL, true);
-                    radio.tocar(Biblioteca.SonsCurtos.START, 50);
-                } else if (e.getKeyCode() == 27 && inicioMenu) {//esc
-                    System.exit(0);
-                } else if (e.getKeyCode() == 32 && inicioMenu) {//back sapace
-                    inicioMenu = false;
-                    menuDeOpcoes = true;
-                    radio.tocar(Biblioteca.SonsCurtos.MENU_DE_OPCOES, 50);
+                if (inicioMenu) {
+                    switch (e.getKeyCode()) {
+                        case 10:
+                            //enter
+                            inicioMenu = false;
+                            inicioDeJogo = true;
+                            radio.tocar(Biblioteca.SonsFundo.NENHUMA_MUSICA, NORMAL, true);
+                            radio.tocar(Biblioteca.SonsCurtos.START, 50);
+                            break;
+                        case 27:
+                            //esc
+                            System.exit(0);
+                        case 32:
+                            //back sapace
+                            inicioMenu = false;
+                            menuDeOpcoes = true;
+                            radio.tocar(Biblioteca.SonsCurtos.MENU_DE_OPCOES, 50);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-
+                
                 //menu de opções
                 if (menuDeOpcoes) {
                     if (e.getKeyCode() == 10) {//enter

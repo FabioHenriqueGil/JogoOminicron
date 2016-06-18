@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class PlayerMp3Wav implements Runnable {
 
-    private final String arquivo;
+    private String arquivo;
     private boolean tocando;
     private boolean pausado;
     private boolean repetir;
