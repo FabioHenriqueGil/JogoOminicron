@@ -20,7 +20,7 @@ import java.awt.event.*;
  */
 public class Janela extends Frame {
 
-    private Radio radio;
+    private final Radio radio;
     JCheckBox checkPause;
     JCheckBox checkMudo;
     JCheckBox checkRepeticao;
@@ -28,7 +28,7 @@ public class Janela extends Frame {
     boolean inicioMenu = true;
     boolean menuDeOpcoes = false;
     boolean inicioDeJogo = false;
-    private GroupLayout layout = new GroupLayout(this);
+    private final GroupLayout layout = new GroupLayout(this);
 
     public Janela() {
         radio = new Radio();
@@ -101,14 +101,25 @@ public class Janela extends Frame {
 
                 //inicio de jogo
                 if (inicioDeJogo) {
-                    if (e.getKeyCode() == 37) {//seta esquerda
-                        System.out.println("seta para esquerda");
-                    } else if (e.getKeyCode() == 38) {//seta cima
-                        System.out.println("seta para cima");
-                    } else if (e.getKeyCode() == 39) {//seta direita
-                        System.out.println("seta para direita");
-                    } else if (e.getKeyCode() == 40) {//seta baixo
-                        System.out.println("seta para baixo");
+                    switch (e.getKeyCode()) {
+                        case 37:
+                            //seta esquerda
+                            System.out.println("seta para esquerda");
+                            break;
+                        case 38:
+                            //seta cima
+                            System.out.println("seta para cima");
+                            break;
+                        case 39:
+                            //seta direita
+                            System.out.println("seta para direita");
+                            break;
+                        case 40:
+                            //seta baixo
+                            System.out.println("seta para baixo");
+                            break;
+                        default:
+                            break;
                     }
                 }
 
@@ -128,6 +139,7 @@ public class Janela extends Frame {
         });
 
         this.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.out.println("Execução finalizada.");
                 System.exit(0);

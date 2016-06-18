@@ -2,6 +2,7 @@
 package controls;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -9,7 +10,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class PlayerMp3Wav implements Runnable {
 
-    private String arquivo;
+    private final String arquivo;
     private boolean tocando;
     private boolean pausado;
     private boolean repetir;
@@ -66,8 +69,7 @@ public class PlayerMp3Wav implements Runnable {
             res.open(decodedFormat);
             sourceDataLine = res;
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao abrir arquivo", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -108,7 +110,6 @@ public class PlayerMp3Wav implements Runnable {
                 System.out.println("Termino de execução " + arquivo);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao executar arquivo", JOptionPane.ERROR_MESSAGE);
         }
     }
