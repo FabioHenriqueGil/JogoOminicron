@@ -1,4 +1,3 @@
-// http://loon-simple.googlecode.com/svn/trunk/j2se/LGame-j2se-0.2.7/mediaframe/mpeg4/audio/Java2AudioDevice.java
 package controls;
 
 import java.io.File;
