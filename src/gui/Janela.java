@@ -96,7 +96,7 @@ public class Janela extends Frame {
                             break;
                         default:
                             break;
-                    }
+                    } 
                 }
 
                 //menu de opções
