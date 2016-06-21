@@ -34,6 +34,7 @@ public class Janela extends Frame {
         radio = new Radio();
         fundo = Biblioteca.SonsFundo.SCIENCE_IS_FUN;
         acaoMusicaFundo();
+        //radio.volumeMusicaFundo(3);
 
         criaInterface();
         radio.tocar(Biblioteca.SonsCurtos.BOAS_VINDAS, 50);
@@ -45,22 +46,22 @@ public class Janela extends Frame {
         JPanel painelSonsFundo = new JPanel();
         painelSonsFundo.setOpaque(false);
 
-        JPanel panelBotoes = new JPanel();
-        panelBotoes.setOpaque(false);
-        panelBotoes.setLayout(new BoxLayout(panelBotoes, BoxLayout.Y_AXIS));
+        JPanel panelInterno = new JPanel();
+        panelInterno.setOpaque(false);
+        panelInterno.setLayout(new BoxLayout(panelInterno, BoxLayout.Y_AXIS));
 
         this.setTitle("Executando audio em Java");
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelBotoes)
+                        .addComponent(panelInterno)
                         .addGap(0, 420, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(400, Short.MAX_VALUE)
-                        .addComponent(panelBotoes)
+                        .addComponent(panelInterno)
                         .addGap(100, 132, Short.MAX_VALUE))
         );
         // this.getContentPane().setLayout(layout);
@@ -97,13 +98,13 @@ public class Janela extends Frame {
                             break;
                     }
                 }
-                
+
                 //menu de opções
                 if (menuDeOpcoes) {
                     if (e.getKeyCode() == 10) {//enter
                         inicioMenu = true;
                         menuDeOpcoes = false;
-                        radio.tocar(Biblioteca.SonsFundo.SCIENCE_IS_FUN, 15, true);
+                        radio.tocar(Biblioteca.SonsFundo.SCIENCE_IS_FUN, 3, true);
                         radio.tocar(Biblioteca.SonsCurtos.BOAS_VINDAS, 50);
                     }
 
@@ -133,8 +134,8 @@ public class Janela extends Frame {
                     }
                 }
 
+                //radio.volumeMusicaFundo(3);
             }
-
 //            @Override
 //            public void keyReleased(KeyEvent e) {
 //                System.out.println("clicou");
@@ -160,7 +161,7 @@ public class Janela extends Frame {
     private void acaoMusicaFundo() {
         // troca de musica
         Biblioteca.SonsFundo musicaFundo = (Biblioteca.SonsFundo) fundo;
-        radio.tocar(musicaFundo, 10, true);
+        radio.tocar(musicaFundo, 3, true);
 
     }
 
