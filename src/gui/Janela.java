@@ -13,8 +13,12 @@ import javax.swing.*;
 import java.awt.*;
 import static java.awt.Frame.NORMAL;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -68,7 +72,17 @@ public class Janela extends Frame {
         this.pack();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-
+        
+         BufferedImage myPicture; // logo
+        try {
+            myPicture = ImageIO.read(new File("arquivos/logo.png"));
+            JLabel picLabel = new JLabel(new ImageIcon(myPicture),SwingConstants.CENTER);
+            picLabel.setHorizontalAlignment(SwingConstants.CENTER );
+            add(picLabel);
+        } catch (IOException ex) {
+            Logger.getLogger(Janela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
